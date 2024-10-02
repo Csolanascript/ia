@@ -1,0 +1,10 @@
+INDEX VERSION 1.134+/home/solana/Documents/inginf/3/ia/.metadata/.plugins/org.eclipse.jdt.core
+2201050720.index
+3187173715.index
+2358181626.index
+748459345.index
+1136544348.index
+3505409215.index
+533301414.index
+1865797976.index
+1058499994.index

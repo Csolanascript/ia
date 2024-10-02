@@ -1,0 +1,270 @@
+package aima.core.environment.eightpuzzle;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import aima.core.agent.Action;
+import aima.core.agent.impl.DynamicAction;
+import aima.core.util.datastructure.XYLocation;
+
+/**
+ * @author Ravi Mohan
+ * @author R. Lunde
+ */
+public class EightPuzzleBoard {
+
+	public static Action MOVER1C = new DynamicAction("MOVER1C");
+
+	public static Action MOVER2C = new DynamicAction("MOVER2C");
+
+	public static Action MOVER1M = new DynamicAction("MOVER1M");
+
+	public static Action MOVER2M = new DynamicAction("MOVER2M");
+	
+	public static Action MOVER1M1C = new DynamicAction("MOVER1M1C");
+	
+	
+	
+	private int[] state;
+
+	//
+	// PUBLIC METHODS
+	//
+
+	public EightPuzzleBoard() {
+		state = new int[] { 3, 3 , 1 , 0 , 0};
+		
+	}
+
+	public EightPuzzleBoard(int[] state) {
+		this.state = new int[state.length];
+		System.arraycopy(state, 0, this.state, 0, state.length);
+	}
+
+	public EightPuzzleBoard(EightPuzzleBoard copyBoard) {
+		this(copyBoard.getState());
+	}
+
+	public int[] getState() {
+		return state;
+	}
+
+	public int getValueAt(int loc) {
+		return state[loc];
+	}
+
+	public int getLocationOf() {
+		return state[2];
+	}
+
+	public void moveMOVER1C() {
+		if(getLocationOf() == 0) { 
+			int canibalesDcha = getValueAt(1);
+			int canibalesIzqda = getValueAt(4);
+			setValue(1,4,canibalesDcha -1,canibalesIzqda +1, 1);
+		}
+		else {
+			int canibalesDcha = getValueAt(1);
+			int canibalesIzqda = getValueAt(4);
+			setValue(1,4,canibalesDcha + 1,canibalesIzqda - 1, 0);
+		}
+
+	}
+
+	public void MOVER2C() {
+		if(getLocationOf() == 0) { 
+			int canibalesDcha = getValueAt(1);
+			int canibalesIzqda = getValueAt(4);
+			setValue(1,4,canibalesDcha -2,canibalesIzqda +2, 1);
+		}
+		else {
+			int canibalesDcha = getValueAt(1);
+			int canibalesIzqda = getValueAt(4);
+			setValue(1,4,canibalesDcha + 2,canibalesIzqda - 2, 0);
+		}
+
+	}
+
+	public void MOVER1M() {
+		if(getLocationOf() == 0) { 
+			int misDcha = getValueAt(0);
+			int misIzqda = getValueAt(3);
+			setValue(0,3,misDcha -1,misIzqda +1, 1);
+		}
+		else {
+			int misDcha = getValueAt(0);
+			int misIzqda = getValueAt(3);
+			setValue(0,3,misDcha + 1,misIzqda - 1, 0);
+		}
+
+	}
+	
+	public void MOVER2M() {
+		if(getLocationOf() == 0) { 
+			int misDcha = getValueAt(0);
+			int misIzqda = getValueAt(3);
+			setValue(0,3,misDcha -1,misIzqda +1, 1);
+		}
+		else {
+			int misDcha = getValueAt(0);
+			int misIzqda = getValueAt(3);
+			setValue(0,3,misDcha + 1,misIzqda - 1, 0);
+		}
+
+	}
+	
+	public void MOVER1M1C() {
+		if(getLocationOf() == 0) { 
+			int canibalesDcha = getValueAt(1);
+			int canibalesIzqda = getValueAt(4);
+			int misDcha = getValueAt(0);
+			int misIzqda = getValueAt(3);
+			setValue(1,4,canibalesDcha -1,canibalesIzqda +1, 1);
+			setValue(0,3,misDcha -1,misIzqda +1, 1);
+		}
+		else {
+			int canibalesDcha = getValueAt(1);
+			int canibalesIzqda = getValueAt(4);
+			int misDcha = getValueAt(0);
+			int misIzqda = getValueAt(3);
+			setValue(1,4,canibalesDcha -1,canibalesIzqda +1, 0);
+			setValue(0,3,misDcha -1,misIzqda +1, 0);
+		}
+
+	}
+
+
+
+	public boolean canMoveGap(Action where) {
+		    int newMisDcha = getValueAt(0); // Número de misioneros a la derecha
+		    int newCanibalesDcha = getValueAt(1); // Número de caníbales a la derecha
+		    int newMisIzqda = getValueAt(3); // Número de misioneros a la izquierda
+		    int newCanibalesIzqda = getValueAt(4); // Número de caníbales a la izquierda
+		    int boat = getLocationOf(); // Posición del bote: 0 para derecha, 1 para izquierda
+
+
+		    // Simular el movimiento según la acción
+		    if (where.equals(MOVER1C)) {
+		        if (boat == 0) { // El bote está en la derecha
+		            newCanibalesDcha -= 1;
+		            newCanibalesIzqda += 1;
+		        } else { // El bote está en la izquierda
+		            newCanibalesDcha += 1;
+		            newCanibalesIzqda -= 1;
+		        }
+		    } else if (where.equals(MOVER2C)) {
+		        if (boat == 0) {
+		            newCanibalesDcha -= 2;
+		            newCanibalesIzqda += 2;
+		        } else {
+		            newCanibalesDcha += 2;
+		            newCanibalesIzqda -= 2;
+		        }
+		    } else if (where.equals(MOVER1M)) {
+		        if (boat == 0) {
+		            newMisDcha -= 1;
+		            newMisIzqda += 1;
+		        } else {
+		            newMisDcha += 1;
+		            newMisIzqda -= 1;
+		        }
+		    } else if (where.equals(MOVER2M)) {
+		        if (boat == 0) {
+		            newMisDcha -= 2;
+		            newMisIzqda += 2;
+		        } else {
+		            newMisDcha += 2;
+		            newMisIzqda -= 2;
+		        }
+		    } else if (where.equals(MOVER1M1C)) {
+		        if (boat == 0) {
+		            newMisDcha -= 1;
+		            newMisIzqda += 1;
+		            newCanibalesDcha -= 1;
+		            newCanibalesIzqda += 1;
+		        } else {
+		            newMisDcha += 1;
+		            newMisIzqda -= 1;
+		            newCanibalesDcha += 1;
+		            newCanibalesIzqda -= 1;
+		        }
+		    }
+
+		    // Verificar que en ninguno de los dos lados haya más canibales que misioneros
+		    if ((newMisDcha >= 0 && newMisDcha < newCanibalesDcha && newMisDcha > 0) ||
+		        (newMisIzqda >= 0 && newMisIzqda < newCanibalesIzqda && newMisIzqda > 0)) {
+		        return false; // Movimiento inválido: más canibales que misioneros en alguno de los lados
+		    }
+
+		    return true;
+		}
+
+	
+
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(state);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EightPuzzleBoard other = (EightPuzzleBoard) obj;
+		return Arrays.equals(state, other.state);
+	}
+
+	@Override
+	public String toString() {
+	    StringBuilder sb = new StringBuilder();
+	    int[] state = getState();
+	    int misionerosIzqda = state[0];
+	    int canibalesIzqda = state[4];
+	    int misionerosDcha = state[3];
+	    int canibalesDcha = state[1];
+	    int bote = state[2];
+
+	    // Construir la cadena de salida
+	    sb.append("RIBERA-IZQ ");
+	    for (int i = 0; i < misionerosIzqda; i++) sb.append("M ");
+	    for (int i = 0; i < canibalesIzqda; i++) sb.append("C ");
+	    
+	    if (bote == 0) {
+	        sb.append("BOTE ");
+	    }
+	    
+	    sb.append("--RIO-- ");
+	    
+	    if (bote == 1) {
+	        sb.append("BOTE ");
+	    }
+	    
+	    for (int i = 0; i < misionerosDcha; i++) sb.append("M ");
+	    for (int i = 0; i < canibalesDcha; i++) sb.append("C ");
+	    sb.append("RIBERA-DCH");
+	    
+	    return sb.toString();
+	}
+
+	//
+	// PRIVATE METHODS
+	//
+
+
+	private void setValue(int pos1, int pos2, int cant1, int cant2, int loc) {
+		state[pos1] = cant1;
+		state[pos2] = cant2;
+		state[2] = loc;
+
+	}
+}

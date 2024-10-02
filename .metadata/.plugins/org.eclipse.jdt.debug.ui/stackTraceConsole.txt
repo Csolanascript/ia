@@ -1,0 +1,29 @@
+if (pathcostM == null) {
+    depth = 0;
+} else {
+    depth = (int) Float.parseFloat(pathcostM);
+}
+
+int expandedNodes;
+if (agent.getInstrumentation().getProperty("nodesExpanded") == null) {
+    expandedNodes = 0;
+} else {
+    expandedNodes = (int) Float.parseFloat(agent.getInstrumentation().getProperty("nodesExpanded"));
+}
+
+int queueSize;
+if (agent.getInstrumentation().getProperty("queueSize") == null) {
+    queueSize = 0;
+} else {
+    queueSize = (int) Float.parseFloat(agent.getInstrumentation().getProperty("queueSize"));
+}
+
+int maxQueueSize;
+if (agent.getInstrumentation().getProperty("maxQueueSize") == null) {
+    maxQueueSize = 0;
+} else {
+    maxQueueSize = (int) Float.parseFloat(agent.getInstrumentation().getProperty("maxQueueSize"));
+}
+
+ti = System.currentTimeMillis() - ti;
+System.out.printf("%-15s|%-11d|%-11d|%-11d|%-11d|%-11d\n", problema, depth, expandedNodes, queueSize, maxQueueSize, ti);
