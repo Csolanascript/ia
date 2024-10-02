@@ -54,7 +54,7 @@ public class EightPuzzleDemo2 {
                 "NodosGenerados", "Ritmo", "Compl Esp","Compl Esp C", "Compl T", "Estimación Tiempo");
 
 
-				 eightPuzzleSearch(new BreadthFirstSearch(new GraphSearch()),boardWithThreeMoveSolution, "BFS-G-3", true, "b^(d+1)", "b^(d+1)", Math.pow(4,4), Math.pow(4,4));
+				 eightPuzzleSearch(new BreadthFirstSearch(new GraphSearch()),boardWithThreeMoveSolution, "BFS-G-3", true, "b^(d+1)", "b^(d+1)" );
 				 eightPuzzleSearch(new BreadthFirstSearch(new TreeSearch()),boardWithThreeMoveSolution, "BFS-T-3", true);
 				 eightPuzzleSearch(new DepthFirstSearch(new GraphSearch()),boardWithThreeMoveSolution, "DFS-G-3",true );
 				  eightPuzzleSearch(new DepthFirstSearch(new TreeSearch()),boardWithThreeMoveSolution, "DFS-T-3", false );
