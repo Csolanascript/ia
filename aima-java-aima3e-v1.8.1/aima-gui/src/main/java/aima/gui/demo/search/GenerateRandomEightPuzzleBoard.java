@@ -12,7 +12,7 @@ import aima.core.environment.canibales.CanibalesBoard;
 public class GenerateRandomEightPuzzleBoard {
 	public static void main(String[] args) {
 		Random r = new Random();
-		CanibalesBoard board = new CanibalesBoard(new int[] { 0, 1, 2, 3,
+		EightPuzzle board = new EightPuzzleBoard(new int[] { 0, 1, 2, 3,
 				4, 5, 6, 7, 8 });
 		for (int i = 0; i < 50; i++) {
 			int th = r.nextInt(4);
