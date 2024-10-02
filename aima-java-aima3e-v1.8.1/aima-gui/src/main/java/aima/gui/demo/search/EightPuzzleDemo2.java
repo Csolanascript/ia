@@ -49,37 +49,38 @@ public class EightPuzzleDemo2 {
 		//eightPuzzleAStarDemo();
 		//eightPuzzleAStarManhattanDemo();
 		//eightPuzzleSimulatedAnnealingDemo();
-		System.out.printf("%-15s%-15s%-10s%-10s%-10s%-15s%-15s%-10s%-15s%-15s%-15s%-20s%n", 
+		System.out.printf("%-15s%-15s%-10s%-10s%-10s%-15s%-15s%-10s%-15s%-40s%-15s%-20s%n", 
                 "Problema", "Profundidad", "Expand", "Q.Size", "MaxQS", "Tiempo (ms)", 
                 "NodosGenerados", "Ritmo", "Compl Esp","Compl Esp C", "Compl T", "Estimación Tiempo");
 
 
-				 eightPuzzleSearch(new BreadthFirstSearch(new GraphSearch()),boardWithThreeMoveSolution, "BFS-G-3", true, "b^(d+1)", "b^(d+1)", Math.pow(4,4), Math.pow(4,4));
-				 eightPuzzleSearch(new BreadthFirstSearch(new TreeSearch()),boardWithThreeMoveSolution, "BFS-T-3", true);
-				 eightPuzzleSearch(new DepthFirstSearch(new GraphSearch()),boardWithThreeMoveSolution, "DFS-G-3",true );
-				  eightPuzzleSearch(new DepthFirstSearch(new TreeSearch()),boardWithThreeMoveSolution, "DFS-T-3", false );
-				 eightPuzzleSearch(new DepthLimitedSearch(9), boardWithThreeMoveSolution,"DLS-9-3", true);
-				 eightPuzzleSearch(new DepthLimitedSearch(3), boardWithThreeMoveSolution,"DLS-3-3", true);
-				 eightPuzzleSearch(new IterativeDeepeningSearch(),boardWithThreeMoveSolution, "IDS-3", true);
-				eightPuzzleSearch(new UniformCostSearch(new GraphSearch()),boardWithThreeMoveSolution, "UCS-G-3", true);
-				eightPuzzleSearch(new UniformCostSearch(new TreeSearch()),boardWithThreeMoveSolution, "UCS-T-3", true);
-				eightPuzzleSearch(new BreadthFirstSearch(new GraphSearch()), random1, "BFS-G-9", true);
-				eightPuzzleSearch(new BreadthFirstSearch(new TreeSearch()), random1, "BFS-T-9", false );
-				eightPuzzleSearch(new DepthFirstSearch(new GraphSearch()), random1, "DFS-G-9", true);
-				eightPuzzleSearch(new DepthLimitedSearch(9), random1, "DLS-9-9",true );
-				eightPuzzleSearch(new DepthLimitedSearch(3), random1, "DLS-3-9", true);
-				eightPuzzleSearch(new IterativeDeepeningSearch(), random1, "IDS-9",true );
-				eightPuzzleSearch(new UniformCostSearch(new GraphSearch()), random1, "UCS-G-9",true );
-				eightPuzzleSearch(new UniformCostSearch(new TreeSearch()), random1, "UCS-T-9", true);
-				eightPuzzleSearch(new BreadthFirstSearch(new GraphSearch()), extreme, "BFS-G-30", true);
-				eightPuzzleSearch(new BreadthFirstSearch(new TreeSearch()), extreme, "BFS-T-30", false);
-				eightPuzzleSearch(new DepthFirstSearch(new GraphSearch()), extreme, "DFS-G-30", true );
-				eightPuzzleSearch(new DepthFirstSearch(new TreeSearch()), extreme, "DFS-T-30", false );
-				eightPuzzleSearch(new DepthLimitedSearch(9), extreme, "DLS-9-30",true);
-				eightPuzzleSearch(new DepthLimitedSearch(3), extreme, "DLS-3-30",true);
-				eightPuzzleSearch(new IterativeDeepeningSearch(), extreme, "IDS-30",false);
-				eightPuzzleSearch(new UniformCostSearch(new GraphSearch()), extreme, "UCS-G-30", true);
-				eightPuzzleSearch(new UniformCostSearch(new TreeSearch()), extreme, "UCS-T-30",false);
+				 eightPuzzleSearch(new BreadthFirstSearch(new GraphSearch()),boardWithThreeMoveSolution, "BFS-G-3", true, "b^(d+1)", "b^(d+1)",(long)Math.pow(4,4), (long)Math.pow(4,4));
+				 eightPuzzleSearch(new BreadthFirstSearch(new TreeSearch()),boardWithThreeMoveSolution, "BFS-T-3", true, "b^(d+1)", "b^(d+1)", (long)Math.pow(4,4), (long)Math.pow(4,4));
+				 eightPuzzleSearch(new DepthFirstSearch(new GraphSearch()),boardWithThreeMoveSolution, "DFS-G-3",true, "b^m", "b*m", (long)Math.pow(4,3), 4*3);
+				  eightPuzzleSearch(new DepthFirstSearch(new TreeSearch()),boardWithThreeMoveSolution, "DFS-T-3", false , "b^m", "b*m", (long)Math.pow(4,3), 4*3);
+				 eightPuzzleSearch(new DepthLimitedSearch(9), boardWithThreeMoveSolution,"DLS-9-3", true, "b^m", "b*m", (long)Math.pow(4,3), 4*3);
+				 eightPuzzleSearch(new DepthLimitedSearch(3), boardWithThreeMoveSolution,"DLS-3-3", true , "b^m", "b*m", (long)Math.pow(4,3), 4*3);
+				 eightPuzzleSearch(new IterativeDeepeningSearch(),boardWithThreeMoveSolution, "IDS-3", true, "b^m", "b*m", (long)Math.pow(4,3), 4*3);
+				eightPuzzleSearch(new UniformCostSearch(new GraphSearch()),boardWithThreeMoveSolution, "UCS-G-3", true, "b^(C/e+1)", "b^(C/e+1)", (long)Math.pow(4,1+(3/1)), (long)Math.pow(4,10));
+				eightPuzzleSearch(new UniformCostSearch(new TreeSearch()),boardWithThreeMoveSolution, "UCS-T-3", true, "b^(C/e+1)", "b^(C/e+1)", (long)Math.pow(4,1+(3/1)), (long)Math.pow(4,10));
+				eightPuzzleSearch(new BreadthFirstSearch(new GraphSearch()), random1, "BFS-G-9", true, "b^(d+1)", "b^(d+1)", (long)Math.pow(4,10), (long)Math.pow(4,10));
+				eightPuzzleSearch(new BreadthFirstSearch(new TreeSearch()), random1, "BFS-T-9", false, "b^(d+1)", "b^(d+1)", (long)Math.pow(4,10), (long)Math.pow(4,10));
+				eightPuzzleSearch(new DepthFirstSearch(new GraphSearch()), random1, "DFS-G-9", true, "b^m", "b*m", (long)Math.pow(4,9), 4*9);
+				eightPuzzleSearch(new DepthFirstSearch(new TreeSearch()), random1, "DFS-T-9", false, "b^m", "b*m", (long)Math.pow(4,9), 4*9);
+				eightPuzzleSearch(new DepthLimitedSearch(9), random1, "DLS-9-9",true , "b^m", "b*m", (long)Math.pow(4,9), 4*9);
+				eightPuzzleSearch(new DepthLimitedSearch(3), random1, "DLS-3-9", true, "b^m", "b*m", (long)Math.pow(4,9), 4*9);
+				eightPuzzleSearch(new IterativeDeepeningSearch(), random1, "IDS-9",true , "b^m", "b*m", (long)Math.pow(4,9), 4*9);
+				eightPuzzleSearch(new UniformCostSearch(new GraphSearch()), random1, "UCS-G-9",true , "b^(C/e+1)", "b^(C/e+1)", (long)Math.pow(4,1+(9/1)), (long)Math.pow(4,10));
+				eightPuzzleSearch(new UniformCostSearch(new TreeSearch()), random1, "UCS-T-9", true, "b^(C/e+1)", "b^(C/e+1)", (long)Math.pow(4,1+(9/1)), (long)Math.pow(4,10));
+				eightPuzzleSearch(new BreadthFirstSearch(new GraphSearch()), extreme, "BFS-G-30", true, "b^(d+1)", "b^(d+1)", (long)Math.pow(4,31), (long)Math.pow(4,31));
+				eightPuzzleSearch(new BreadthFirstSearch(new TreeSearch()), extreme, "BFS-T-30", false, "b^(d+1)", "b^(d+1)", (long)Math.pow(4,31), (long)Math.pow(4,31));
+				eightPuzzleSearch(new DepthFirstSearch(new GraphSearch()), extreme, "DFS-G-30", true,  "b^m", "b*m", (long)Math.pow(4,30), 4*30);
+				eightPuzzleSearch(new DepthFirstSearch(new TreeSearch()), extreme, "DFS-T-30", false,  "b^m", "b*m", (long)Math.pow(4,30), 4*30);
+				eightPuzzleSearch(new DepthLimitedSearch(9), extreme, "DLS-9-30",true, "b^m", "b*m", (long)Math.pow(4,30), 4*30);
+				eightPuzzleSearch(new DepthLimitedSearch(3), extreme, "DLS-3-30",true, "b^m", "b*m", (long)Math.pow(4,30), 4*30);
+				eightPuzzleSearch(new IterativeDeepeningSearch(), extreme, "IDS-30",false, "b^m", "b*m", (long)Math.pow(4,30), 4*30);
+				eightPuzzleSearch(new UniformCostSearch(new GraphSearch()), extreme, "UCS-G-30", true, "b^(C/e+1)", "b^(C/e+1)", (long)Math.pow(4,1+(30/1)), (long)Math.pow(4,10));
+				eightPuzzleSearch(new UniformCostSearch(new TreeSearch()), extreme, "UCS-T-30",false, "b^(C/e+1)", "b^(C/e+1)", (long)Math.pow(4,1+(30/1)), (long)Math.pow(4,10));
 	}
 	
       private static void eightPuzzleSearch(Search busqueda , EightPuzzleBoard estado, String problem, Boolean ejecutar, String complEsp, String complT, double estimacionTiempo, double calculoCompEsp) {
@@ -140,12 +141,12 @@ public class EightPuzzleDemo2 {
     			}
 
                 
-                System.out.printf("%-15s%-15d%-10d%-10d%-10d%-15d%-15d%-10.2f%-15s%-15f%-15s%-20f%n",  problem, depth, expandedNodes, queueSize, maxQueueSize, ti, 
+                System.out.printf("%-15s%-15d%-10d%-10d%-10d%-15d%-15d%-10.2f%-15s%-40f%-15s%-20f%n",  problem, depth, expandedNodes, queueSize, maxQueueSize, ti, 
                 		generatedNodes, ritmo, complEsp,calculoCompEsp, complT, estimacionTiempo);
 
     			}
     			else {
-    			System.out.printf("%-15s%-15s%-10s%-10s%-10s%-15s%-15s%-10s%-15s%-15s%-20s%n", 
+    			System.out.printf("%-15s%-15s%-10s%-10s%-10s%-15s%-15s%-10s%-40s%-15s%-20s%n", 
     		                  problem, "---", "---", "---", "---", "---", "---", "---", "---", "---", "---","(1)");
 
     			}
