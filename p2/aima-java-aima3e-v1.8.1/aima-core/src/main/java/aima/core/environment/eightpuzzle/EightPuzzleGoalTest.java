@@ -8,7 +8,7 @@ import aima.core.search.framework.GoalTest;
  */
 public class EightPuzzleGoalTest implements GoalTest {
 
-    EightPuzzleBoard objetivo;
+    static EightPuzzleBoard objetivo;
 
     public EightPuzzleGoalTest() {}
 

@@ -28,13 +28,13 @@ public class ManhattanHeuristicFunction implements HeuristicFunction {
 		XYLocation locObjetivo = objetivo.getLocationOf(i);
 		XYLocation loc = board.getLocationOf(i);
 		//System.out.println(board);
-		System.out.println(objetivo);
+		//System.out.println(objetivo);
 		int xpos = loc.getXCoOrdinate();
 		int ypos = loc.getYCoOrdinate();
 		int xposGoal = locObjetivo.getXCoOrdinate();
 		int yposGoal = locObjetivo.getYCoOrdinate();
 		int retVal = Math.abs(xpos - xposGoal) + Math.abs(ypos - yposGoal);
-		System.out.println(retVal);
+		//System.out.println(retVal);
 		
 		return retVal;
 	}

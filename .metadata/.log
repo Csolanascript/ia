@@ -2040,3 +2040,16 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp
 
 !ENTRY org.eclipse.e4.ui.workbench 2 0 2024-10-21 16:02:30.051
 !MESSAGE Removing PartDescriptorImpl with the "org.eclipse.tips.ide.tipPart" id and the "Tip of the Day" label.It points to the non available "bundleclass://org.eclipse.tips.ide/org.eclipse.tips.ide.internal.TipPart" class. Bundle might have been uninstalled
+!SESSION 2024-10-22 22:59:26.946 -----------------------------------------------
+eclipse.buildId=4.33.0.20240905-0613
+java.version=21.0.4
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.dsl.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.dsl.product -data /home/solana/Documents/inginf/3/ia
+
+!ENTRY ch.qos.logback.classic 1 0 2024-10-22 22:59:29.486
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-10-22 22:59:30.950
+!MESSAGE Logback config file: /home/solana/Documents/inginf/3/ia/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.6.1.20240411-1122.xml
