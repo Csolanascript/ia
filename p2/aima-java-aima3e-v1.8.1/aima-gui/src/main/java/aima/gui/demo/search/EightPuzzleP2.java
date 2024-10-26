@@ -16,7 +16,7 @@ import aima.core.search.uninformed.BreadthFirstSearch;
 import aima.core.util.math.*;
 
 /**
- * @author Ravi Mohan && Marcos Pérez (820532)
+ * @author Ravi Mohan
  * 
  */
 
@@ -24,16 +24,15 @@ public class EightPuzzleP2 {
 	static EightPuzzleBoard ini;
 	static EightPuzzleBoard objetivo;
 	public static void main(String[] args) {
-		String linea = "---------------------------------------------------------------------";
+		String linea = "-----------------------------------------------------------------------";
 		System.out.format("%s\n",linea);
-		System.out.format("||   ||        Nodos Generados      ||                b*           ||\n");
+		System.out.format("||   ||        Nodos Generados      ||               b*           ||\n");
 		System.out.format("%s\n",linea);
-		System.out.format("||  d|| BFS | IDS | A*h(1) | A*h(2) || BFS | IDS | A*h(1) | A*h(2) ||\n");
+		System.out.format("||  d|| BFS | IDS | A*h(1) | A*h(2) || BFS | IDS | A*h(1) | A*h(2)||\n");
 		System.out.format("%s\n",linea);
 		System.out.format("%s\n",linea);
 		
-		
-		String sinRes = "-----";
+		String vacio = "-----";
 		EightPuzzleBoard ini;
 		EightPuzzleBoard objetivo = null;
 		Problem problem;
@@ -135,11 +134,11 @@ public class EightPuzzleP2 {
 			if(j <= 10)
 			{
 				bIDS = GFG.bisection(nodosIDS,j);
-				System.out.format("%5s %6s %5s %7s %7s %7.3f %7.3f %7.3f %7.3f\n",j,nodosBFS,nodosIDS,nodosA1,nodosA2,bBFS,bIDS,bA1,bA2);
+				System.out.format("%5s %5s %5s %7s %7s %7.3f %7.3f %7.3f %7.3f\n",j,nodosBFS,nodosIDS,nodosA1,nodosA2,bBFS,bIDS,bA1,bA2);
 			}
 			else
 			{
-				System.out.format("%5s %6s %5s %7s %7s %7.3f %7.3s %7.3f %7.3f\n",j,nodosBFS,sinRes,nodosA1,nodosA2,bBFS,sinRes,bA1,bA2);
+				System.out.format("%5s %5s %5s %7s %7s %7.3f %7.3s %7.3f %7.3f\n",j,nodosBFS,vacio,nodosA1,nodosA2,bBFS,vacio,bA1,bA2);
 			}
 		}
 		

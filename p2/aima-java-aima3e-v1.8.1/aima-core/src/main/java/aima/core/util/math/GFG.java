@@ -1,64 +1,72 @@
 package aima.core.util.math;
 
+public class GFG {
+    // Definir la tolerancia mínima aceptable
+    static final double TOLERANCIA = 0.01;
+    static final int MAX_ITERACIONES = 1000; // Se limita el número de iteraciones para evitar ciclos infinitos
 
-/**
- * @author geeksforgeeks.org
- * 
- * https://www.geeksforgeeks.org/program-for-bisection-method/
- */
+    // Función genérica que queremos resolver
+    static double evaluarFuncion(double x, double N, double d) {
+        return ((x * (1 - Math.pow(x, d))) / (1.000001 - x)) - N;
+    }
 
+    // Implementación del método iterativo de búsqueda de raíz
+    public static double bisection(double N, double d) {
+        // Intervalo inicial de búsqueda
+        double extremoIzquierdo = 1;
+        double extremoDerecho = 4;
 
-//Java program for implementation of Bisection Method
-//for solving equations
-public class GFG{
- static final float EPSILON = (float)0.01;
+        // Verificación inicial de si la función cambia de signo en el intervalo dado
+        double valorIzquierdo = evaluarFuncion(extremoIzquierdo, N, d);
+        double valorDerecho = evaluarFuncion(extremoDerecho, N, d);
+        
+        if (valorIzquierdo * valorDerecho >= 0) {
+            System.out.println("No hay cambio de signo en el intervalo proporcionado.");
+            return Double.NaN; // Indica que no se encontró una raíz en este intervalo
+        }
 
- // An example function whose solution is determined using
- // Bisection Method. The function is x^3 - x^2  + 2
- static double func(double x, double N, double d)
- {
-	 return ((x*(1-Math.pow(x, d))) / (1.000001-x)) - N;
- }
+        // Definir variables adicionales para el proceso iterativo
+        double puntoMedio = 0;
+        int contadorIteraciones = 0;
 
- // Prints root of func(x) with error of EPSILON
- public static double bisection(double N, double d)
- {
-	 // limites del problema
-	 double a = 1;
-	 double b = 4; 
-     if (func(a,N,d) * func(b,N,d) >= 0)
-     {
-         System.out.println("You have not assumed"
-                     + " right a and b");
-         return 0;
-     }
+        // Se ejecuta un número limitado de iteraciones en lugar de depender solo de la diferencia entre límites
+        while (contadorIteraciones < MAX_ITERACIONES) {
+            puntoMedio = (extremoIzquierdo + extremoDerecho) / 2;
+            double valorMedio = evaluarFuncion(puntoMedio, N, d);
 
-     double c = a;
-     while (Math.abs(b-a) >= EPSILON)
-     {
-         // Find middle point
-         c = (a+b)/2;
+            // Si la función en el punto medio es lo suficientemente pequeña, consideramos que encontramos la raíz
+            if (Math.abs(valorMedio) < TOLERANCIA) {
+                break; // Se ha alcanzado la solución con la precisión deseada
+            }
 
-         // Check if middle point is root
-         if (func(c,N,d) == 0.0)
-             break;
+            // Actualizar los límites según el signo del valor en el punto medio
+            if (valorIzquierdo * valorMedio < 0) {
+                extremoDerecho = puntoMedio; // La raíz está en el intervalo izquierdo
+            } else {
+                extremoIzquierdo = puntoMedio; // La raíz está en el intervalo derecho
+                valorIzquierdo = valorMedio; // Actualizar el valor en el extremo izquierdo
+            }
 
-         // Decide the side to repeat the steps
-         else if (func(c,N,d)*func(a,N,d) < 0)
-             b = c;
-         else
-             a = c;
-     }
-             //prints value of c upto 4 decimal places
-     return c;
- }
+            contadorIteraciones++;
+        }
 
- // Driver program to test above function
- public static void main(String[] args)
- {
-     // Initial values assumed
-     double a =-200, b = 300;
-     bisection(a, b);
- }
- // This code is contributed by Nirmal Patel
+        if (contadorIteraciones >= MAX_ITERACIONES) {
+            System.out.println("Número máximo de iteraciones alcanzado, puede que no se haya convergido a la raíz.");
+        }
+
+        return puntoMedio;
+    }
+
+    public static void main(String[] args) {
+        // Valores de entrada para la función
+        double valorObjetivo = 2.5;
+        double exponente = 3;
+
+        double resultado = buscarRaiz(valorObjetivo, exponente);
+        if (!Double.isNaN(resultado)) {
+            System.out.printf("La raíz aproximada es: %.4f\n", resultado);
+        } else {
+            System.out.println("No se encontró una raíz en el intervalo proporcionado.");
+        }
+    }
 }
