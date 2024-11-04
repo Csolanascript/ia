@@ -65,7 +65,7 @@ public class NQueensDemoP3 {
 
 		nQueensHillClimbingSearch_Statistics(10000);
 		nQueensRandomRestartHillClimbing();
-		nQueensSimulatedAnnealingSearch(1000);
+		nQueensSimulatedAnnealingSearch(1000);0
 		nQueensSimulatedAnnealingRandomrestart();
 		nQueensGeneticAlgorithmSearch();
 	}
